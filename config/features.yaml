@@ -1,0 +1,79 @@
+# features.yaml — fonte de verdade de todas as features
+# Lido em runtime pelo Registry
+# Mudar uma feature = PR neste arquivo
+
+feature_groups:
+
+  customer:
+    description: "Features do perfil do cliente"
+    entity: customer_id
+    features:
+      - name: account_age_days
+        dtype: int
+        description: "Dias desde a criacao da conta"
+        min_value: 0
+        max_value: 36500
+        allow_null: false
+
+      - name: plan_type
+        dtype: string
+        description: "Plano atual do cliente"
+        allowed_values: ["free", "basic", "premium", "enterprise"]
+        allow_null: false
+
+      - name: monthly_spend_usd
+        dtype: float
+        description: "Gasto mensal em USD"
+        min_value: 0.0
+        max_value: 10000.0
+        allow_null: true
+
+  transactions:
+    description: "Agregacoes de transacoes por janela temporal"
+    entity: customer_id
+    features:
+      - name: tx_count_7d
+        dtype: int
+        description: "Numero de transacoes nos ultimos 7 dias"
+        min_value: 0
+        max_value: 10000
+        allow_null: false
+
+      - name: tx_count_30d
+        dtype: int
+        description: "Numero de transacoes nos ultimos 30 dias"
+        min_value: 0
+        max_value: 100000
+        allow_null: false
+
+      - name: avg_tx_value_30d
+        dtype: float
+        description: "Valor medio de transacao nos ultimos 30 dias"
+        min_value: 0.0
+        max_value: 50000.0
+        allow_null: true
+
+  support:
+    description: "Historico de suporte — alta sensibilidade a data leakage"
+    entity: customer_id
+    features:
+      - name: open_tickets
+        dtype: int
+        description: "Tickets abertos no momento"
+        min_value: 0
+        max_value: 1000
+        allow_null: false
+
+      - name: resolved_tickets_30d
+        dtype: int
+        description: "Tickets resolvidos nos ultimos 30 dias"
+        min_value: 0
+        max_value: 500
+        allow_null: false
+
+      - name: last_contact_days_ago
+        dtype: int
+        description: "Dias desde o ultimo contato com suporte"
+        min_value: 0
+        max_value: 3650
+        allow_null: true

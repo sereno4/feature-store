@@ -1,0 +1,157 @@
+# Historico simulado de features
+# feature_ts: quando a feature foi computada
+# Multiplos snapshots por cliente ao longo do tempo
+
+events:
+
+  # customer_001 — cliente saudavel
+  - customer_id: "customer_001"
+    feature_group: customer
+    feature_name: account_age_days
+    feature_value: 120
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_001"
+    feature_group: customer
+    feature_name: account_age_days
+    feature_value: 150
+    feature_ts: "2024-01-31T00:00:00"
+
+  - customer_id: "customer_001"
+    feature_group: customer
+    feature_name: plan_type
+    feature_value: "basic"
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_001"
+    feature_group: transactions
+    feature_name: tx_count_30d
+    feature_value: 45
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_001"
+    feature_group: transactions
+    feature_name: tx_count_30d
+    feature_value: 52
+    feature_ts: "2024-02-01T00:00:00"
+
+  - customer_id: "customer_001"
+    feature_group: support
+    feature_name: open_tickets
+    feature_value: 0
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_001"
+    feature_group: support
+    feature_name: open_tickets
+    feature_value: 1
+    feature_ts: "2024-02-01T00:00:00"
+
+  # customer_002 — vai churnar em marco
+  # ATENCAO: tickets explodem em fevereiro
+  # features de marco NAO devem aparecer no dataset de treino
+  # com label de fevereiro — isso seria data leakage
+
+  - customer_id: "customer_002"
+    feature_group: customer
+    feature_name: account_age_days
+    feature_value: 30
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_002"
+    feature_group: customer
+    feature_name: plan_type
+    feature_value: "free"
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_002"
+    feature_group: support
+    feature_name: open_tickets
+    feature_value: 1
+    feature_ts: "2024-01-15T00:00:00"
+
+  - customer_id: "customer_002"
+    feature_group: support
+    feature_name: open_tickets
+    feature_value: 4
+    feature_ts: "2024-02-10T00:00:00"
+
+  - customer_id: "customer_002"
+    feature_group: support
+    feature_name: open_tickets
+    feature_value: 9
+    feature_ts: "2024-03-01T00:00:00"
+
+  - customer_id: "customer_002"
+    feature_group: transactions
+    feature_name: tx_count_30d
+    feature_value: 12
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_002"
+    feature_group: transactions
+    feature_name: tx_count_30d
+    feature_value: 3
+    feature_ts: "2024-02-01T00:00:00"
+
+  - customer_id: "customer_002"
+    feature_group: transactions
+    feature_name: tx_count_30d
+    feature_value: 0
+    feature_ts: "2024-03-01T00:00:00"
+
+  # customer_003 — dados esparsos
+  - customer_id: "customer_003"
+    feature_group: customer
+    feature_name: account_age_days
+    feature_value: 365
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_003"
+    feature_group: customer
+    feature_name: monthly_spend_usd
+    feature_value: 49.90
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_003"
+    feature_group: support
+    feature_name: open_tickets
+    feature_value: 0
+    feature_ts: "2024-01-01T00:00:00"
+
+  # customer_004 — premium estavel
+  - customer_id: "customer_004"
+    feature_group: customer
+    feature_name: account_age_days
+    feature_value: 730
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_004"
+    feature_group: customer
+    feature_name: plan_type
+    feature_value: "premium"
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_004"
+    feature_group: customer
+    feature_name: monthly_spend_usd
+    feature_value: 299.00
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_004"
+    feature_group: transactions
+    feature_name: tx_count_30d
+    feature_value: 310
+    feature_ts: "2024-01-01T00:00:00"
+
+  - customer_id: "customer_004"
+    feature_group: transactions
+    feature_name: tx_count_30d
+    feature_value: 298
+    feature_ts: "2024-02-01T00:00:00"
+
+  - customer_id: "customer_004"
+    feature_group: support
+    feature_name: open_tickets
+    feature_value: 0
+    feature_ts: "2024-01-01T00:00:00"
